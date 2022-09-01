@@ -45,7 +45,7 @@ ul,ol {
 img {
     display: block;
     max-width: 100%;
-        height: auto;
+    height: auto;    
 }
 
 button {
@@ -168,6 +168,7 @@ align-items: center;
        color: var(--primary-text-color);
        position: relative;
        padding-bottom: 32px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
    
     }
 
@@ -214,6 +215,8 @@ font-family: var(--primary-font);
         gap: 10px;
         fill: currentColor;
         align-items: center;
+        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+                
        
 }
 .contact:hover,
@@ -236,6 +239,7 @@ font-family: var(--primary-font);
     background-color: var(--color-btn-text);
     border-radius: 4px;
     border: none;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-open-btn:hover,
@@ -396,6 +400,7 @@ color: var(--primary-text-color-theme-blew);
     font-family: var(--primary-font);
         line-height: 1.7;
         color: var(--secondary-text-color);
+        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
         
 }
 
@@ -442,6 +447,8 @@ font-family: var(--primary-font);
         padding: 6px 22px;
         border: none;
         border-radius: 4px;
+        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+            background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -495,25 +502,12 @@ font-family: var(--primary-font);
     color: var(--primary-text-color);
 }
  
-.card-interactive {
-    display: block;
-    position: relative;
-    text-decoration: none;
-       
-    
-}
-
-.card-interactive:hover,
-.card-interactive:focus {
-        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16); }
-
 .text-transform {
     position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
         height: 100%;
-        overflow: auto;
+        overflow: hidden;
         padding: 64px 24px;
         color: var(--primary-text-color-theme-blew);
     font-family: var(--primary-font);
@@ -521,7 +515,7 @@ font-family: var(--primary-font);
         font-size: 18px;
         line-height: 1.5;
         transform: translateY(100%);
-        transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
         .card-interactive:hover .text-transform,
         .card-interactive:focus .text-transform 
@@ -530,10 +524,21 @@ font-family: var(--primary-font);
             background: rgba(33, 150, 243, 0.9);
         }
 
+.card-interactive:hover,
+.card-interactive:focus {
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
 
 .card-transform {
-position: relative;
+    position: relative;
     overflow: hidden;
+}
+
+.card-interactive {
+    display: block;
+    position: relative;
+    text-decoration: none;
 }
 
 /*--------------------------------------ICON--------------------------*/
@@ -600,6 +605,8 @@ cursor: pointer;
     height: 44px;
         color: #afb1b8;
         cursor: pointer;
+        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
 }
 .social-list-link:hover,
 .social-list-link:focus {
@@ -631,6 +638,8 @@ cursor: pointer;
         border: 1px solid #AFB1B8;
         border-radius: 4px;
             color: #afb1b8;  
+            transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
 }
 
 .customers-list-link:hover, 
@@ -678,4 +687,55 @@ cursor: pointer;
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 50%;
         cursor: pointer;
+        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     }
+
+
+   /*----------------------------------MODAL WINDOW--------------------------*/
+   .beckdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition: opacity 500ms ease, visibility 500ms ease;
+
+   }
+
+   .is-hidden {
+    opacity: 0;
+    pointer-events: none;
+visibility: hidden;
+   }
+
+   .modal-window-open {
+     height: 581px;
+     width: 528px;
+     background-color: #FFFFFF;
+     position: absolute;
+     top: 50%;
+     left:50%;
+     transform: translate(-50%, -50%);
+   }
+
+   .modal-close-btn {
+    background: transparent;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;    
+        position: absolute;
+        top: 8px;
+        right: 8px;
+   }
+
+  
